@@ -1,5 +1,5 @@
 const express = require("express");
-import { createTodo, updateTodo } from "./types";
+const { createTodo, updateTodo } =  require("./types")
 
 const app = express();
 

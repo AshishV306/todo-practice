@@ -1,4 +1,5 @@
 const express = require("express");
+import { createTodo, updateTodo } from "./types";
 
 const app = express();
 
@@ -9,11 +10,25 @@ app.get('/todos', (req,res)=>{
 })
 
 app.post('/todos', (req,res)=>{
-    res.send("Hello");
+    const createPayload = req.body;
+    const response = createTodo.safeParse(createPayload);
+    if(!response.success){
+        res.status(411).json({
+            msg:" You sent the wrong inputs"
+        })
+    }
+    return;
 })
 
 app.put('/todos', (req,res)=>{
-    res.send("Hello");
+    const upadatePayload = req.body;
+    const response = updateTodo.safeParse(upadatePayload);
+    if(!response.success){
+        res.status(411).json({
+            msg:" You sent the wrong inputs"
+        })
+    }
+    return;
 })
 
 

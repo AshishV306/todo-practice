@@ -1,12 +1,13 @@
-import React from 'react'
-
+import "..App";
+ 
 export default function CreateTodo() {
   return (
     <div>
-        <input type="text" placeholder='title'/>
-        <input type="text" placeholder='description' />
+        <h1 className='heading'>Todo App</h1>
+        <input className='title' type="text" placeholder='title'/><br />
+        <input className='description' type="text" placeholder='description' /><br />
 
-        <button>Add a todo</button>
+        <button className='button'>Add a todo</button>
     </div>
   )
 }

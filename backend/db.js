@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 const { boolean } = require("zod");
+require('dotenv').config();
 
-mongoose.connect('mongodb+srv://ashishvispute306:AFywzDalWMdPCMW3@cluster0.dmsasva.mongodb.net/');
+mongoose.connect(process.env.MONGO);
 
 const todoSchema = mongoose.Schema({
-    title: String,
+    title: String, 
     description: String,
     completed: Boolean
 });

@@ -8,7 +8,7 @@ app.use(express.json());
 app.get('/todos', async (req,res)=>{
     const todos = await todo.find({});
     res.json({
-        todos
+        todos 
     })
 })
 

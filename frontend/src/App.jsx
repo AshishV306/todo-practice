@@ -7,6 +7,9 @@ function App() {
 
   const[todos, setTodos] = useState([]);
 
+  // const data = fetch("http://localhost:3000/todos");
+
+
   return (
     
       <div>

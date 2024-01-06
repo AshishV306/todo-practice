@@ -1,4 +1,4 @@
-import "..App";
+import "../App.css";
  
 export default function CreateTodo() {
   return (

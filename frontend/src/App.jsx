@@ -1,4 +1,5 @@
 import CreateTodo  from './components/CreateTodo'
+import Todos from './components/Todos'
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     
       <div>
         <CreateTodo></CreateTodo>
+        <Todos></Todos>
       </div>
   
   )

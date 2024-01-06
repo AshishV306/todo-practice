@@ -1,15 +1,18 @@
 const express = require("express");
 const { createTodo, updateTodo } =  require("./types")
-
+const {todo}=require("./db")
 const app = express();
 
 app.use(express.json());
 
-app.get('/todos', (req,res)=>{
-    res.send("Hello");
+app.get('/todos', async (req,res)=>{
+    const todos = await todo.find({});
+    res.json({
+        todos
+    })
 })
 
-app.post('/todos', (req,res)=>{
+app.post('/todos', async (req,res)=>{
     const createPayload = req.body;
     const response = createTodo.safeParse(createPayload);
     if(!response.success){
@@ -17,10 +20,23 @@ app.post('/todos', (req,res)=>{
             msg:" You sent the wrong inputs"
         })
     }
-    return;
+    const title= req.body.title;
+    const description= req.body.description;
+    const completed = false;
+    //console.log(title, descriptio);
+
+     await todo.create({
+        title,
+        description,
+        completed
+      })
+    // return;
+    res.json({
+        message: 'todo created successfully'
+    })
 })
 
-app.put('/todos', (req,res)=>{
+app.put('/completed', async (req,res)=>{
     const upadatePayload = req.body;
     const response = updateTodo.safeParse(upadatePayload);
     if(!response.success){
@@ -28,7 +44,15 @@ app.put('/todos', (req,res)=>{
             msg:" You sent the wrong inputs"
         })
     }
-    return;
+
+    await todo.updateOne({
+          _id: req.body.id },
+        { completed:true }
+        );
+
+    res.json({
+        message: 'todo marked completed'
+    })
 })
 
 
